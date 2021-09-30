@@ -13,13 +13,12 @@
       <a href="#about-the-project">About The Project</a>
       <ul>
         <li><a href="#overview">Overview</a></li>
-	      <ul>
-			<li><a href="#wake-up-task-behavior">Wake Up Task Behavior</a></li>
-			<li><a href="#expected-behavior">Expected Behavior</a></li>
-			<li><a href="#check-notifications-received">Check Notifications Received</a></li>
-			<li><a href="#debugging-monitor">Debugging Monitor</a></li>
-	      </ul>
-	
+	<ul>
+	  <li><a href="#wake-up-task-behavior">Wake Up Task Behavior</a></li>
+	  <li><a href="#expected-behavior">Expected Behavior</a></li>
+	  <li><a href="#check-notifications-received">Check Notifications Received</a></li>
+	  <li><a href="#debugging-monitor">Debugging Monitor</a></li>
+	</ul>
       </ul>
     </li>
 	<li><a href="#comments">Comments</a></li>
