@@ -32,7 +32,7 @@ This project is built on the EK-TM4C123GXL development board.
 
 ### Overview
 This project consists of two section: Debug and Not Debug. <br>
-* Not Debug section: <br>
+<strong>Not Debug section:</strong> <br>
 In this section, the project will simulate waking up a task from interrupt. Specifically, this task when created will be in a block state and wait for a notification to be sent from the Interrupt Service Routine. When receiving the notification, the task will leave the block state and execute its work.<br>
 * Task 1 – The Wake Up Task:<br>
 The wake up task is implemented by the vTaskWakeUp() function in file main. When enabling the scheduler to start with the vTaskStartScheduler() function, this task will wait for a notification by using the API function ulTaskNotifyTake().<br>
