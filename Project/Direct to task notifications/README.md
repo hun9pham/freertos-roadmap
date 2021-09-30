@@ -32,17 +32,17 @@ This project is built on the EK-TM4C123GXL development board.
 
 ### Overview
 This project consists of two section: Debug and Not Debug. <br>
-<strong>Not Debug section:</strong> <br>
+<h3>Not Debug section:</h3> <br>
 In this section, the project will simulate waking up a task from interrupt. Specifically, this task when created will be in a block state and wait for a notification to be sent from the Interrupt Service Routine. When receiving the notification, the task will leave the block state and execute its work.<br>
 * Task 1 – The Wake Up Task:<br>
 The wake up task is implemented by the vTaskWakeUp() function in file main. When enabling the scheduler to start with the vTaskStartScheduler() function, this task will wait for a notification by using the API function ulTaskNotifyTake().<br>
 This project uses an external interrupt, specifically on port F pin 0 (Switch 1). When interrupt occurs (Switch 1 is pressed), a notification will be sent to the task to wake up this task. When the task wakes up, the green LED will blink with a period of 300ms.<br>
 * Task 2 – The Task Idle Hook<br>
 An idle task hook is a function that is called during each cycle of the idle task. This task will turn on the red LED, indicating that when task 1 has not woken up, the idle task will be executed when there are no other tasks with higher priority in the ready state. The task idle hook is implemented by the vApplicationIdleHook().<br>
-*Setup for this section:<br>
+* Setup for this section:<br>
 Make macro DEBUG_ becomes comment or deletes it.<br>
 Set macro configUSE_IDLE_HOOK in FreeRTOSConfig.h to 1.<br>
-<strong>Debug section:</strong> <br>
+<h3>Debug section:</h3> <br>
 
 ### Expected Behavior
 <p>
