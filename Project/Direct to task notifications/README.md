@@ -44,7 +44,7 @@ This project uses an external interrupt, specifically on port F pin 0 (Switch 1)
 * Task 2 – The Task Idle Hook<br>
 An idle task hook is a function that is called during each cycle of the idle task. This task will turn on the red LED, indicating that when task 1 has not woken up, the idle task will be executed when there are no other tasks with higher priority in the ready state. The task idle hook is implemented by the vApplicationIdleHook().<br>
 * Setup for this section:<br>
-Make macro DEBUG_ becomes comment or deletes it.<br>
+Make macro DEBUG_ becomes comment or deletes it at the top file after include libraries.<br>
 Set macro configUSE_IDLE_HOOK in FreeRTOSConfig.h to 1.<br>
 
 #### Expected Behavior
@@ -55,11 +55,19 @@ When the task 1 which has higher priority than the idle task has not been woken 
 </p>
 When task 1 is woken up by the notification received from interrupt (switch 1 is pressed), now task 1 will start executing its work (blinking the green LED).
 <p align="center">
-  <img src="images/GreenRedLED.png" width="275" title="hover text">
+  <img src="images/GreenRedLED.png" width="255" title="hover text">
 </p>
 
 #### Check Notifications Received
-
+This section consists of two tasks: Task sends notifications and Task receives notifications.<br>
+* Task receives notifications - vDEBUG_TaskReceive()<br>
+This task uses the API function xTaskNotifyWait() to wait for the notification to be sent from the sending task. If no notification is sent, the task will enter the block state and wait until the notification appears. This is the meaning of the 4th parameter of the xTaskNotifyWait() function (portMAX_DELAY).<br>
+* Task sends notifications - vDEBUG_TaskSend()<br>
+This task uses API functions xTaskNotifyGive() and xTaskNotify respectively with different parameters.<br>
+<italic>The purpose of this section is added to better understand about the types of notification that the task receives.</italic>
+* Setup for this section:<br>
+Define macro DEBUG_ (#define DEBUG_) at the top file after include libraries.<br>
+Set macro configUSE_IDLE_HOOK in FreeRTOSConfig.h to 0.<br>
 #### Debugging Monitor
 <p>
 The queue send task writes to the queue every 200ms, so every 200ms the queue receive task will blink the green LED indicating that data was received on the queue from the queue send task.
