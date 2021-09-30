@@ -61,7 +61,7 @@ When task 1 is woken up by the notification received from interrupt (switch 1 is
 #### Check Notifications Received
 This section consists of two tasks: Task sends notifications and Task receives notifications.<br>
 * Task receives notifications - vDEBUG_TaskReceive()<br>
-This task uses the API function xTaskNotifyWait() to wait for the notification to be sent from the sending task. If no notification is sent, the task will enter the block state and wait until the notification appears. This is the meaning of the 4th parameter of the xTaskNotifyWait() function (portMAX_DELAY).<br>
+This task uses the API function xTaskNotifyWait() to wait for the notification to be sent from the sending task. If no notification is sent, the task will enter the block state and wait until the notification appears. This is the meaning of the 4th parameter of the xTaskNotifyWait() function (portMAX_DELAY). The notification received is stored by the ui32NotificationReceive variable.<br>
 * Task sends notifications - vDEBUG_TaskSend()<br>
 This task uses API functions xTaskNotifyGive() and xTaskNotify respectively with different parameters.<br>
 
@@ -71,9 +71,9 @@ Define macro DEBUG_ (#define DEBUG_) at the top file after include libraries.<br
 Set macro configUSE_IDLE_HOOK in FreeRTOSConfig.h to 0.<br>
 #### Debugging Monitor
 <p>
-The queue send task writes to the queue every 200ms, so every 200ms the queue receive task will blink the green LED indicating that data was received on the queue from the queue send task.
+Task sends a notification by using xTaskNotifyGive(). More about [xTaskNotifyGive()](https://www.freertos.org/xTaskNotifyGive.html)
 <p align="center">
-  <img src="images/GreenLED.jpg" width="350" title="hover text">
+  <img src="images/xTaskNotifyGive.png" width="250" title="hover text">
 </p>
 The queue send software timer has a period of two seconds, and is reset each time SW1 is pressed.  So if two seconds expire without SW1 being
 pressed then the queue receive task will blink the red LED indicating that data was received on the queue from the queue send software timer.
