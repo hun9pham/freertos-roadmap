@@ -13,10 +13,13 @@
       <a href="#about-the-project">About The Project</a>
       <ul>
         <li><a href="#overview">Overview</a></li>
-	      	<li><a href="#wake-up-task-behavior">Wake Up Task Behavior</a></li>
-		<li><a href="#expected-behavior">Expected Behavior</a></li>
-		<li><a href="#check-notifications-received">Check Notifications Received</a></li>
-	     	<li><a href="#debugging-monitor">Debugging Monitor</a></li>
+	      <ul>
+			<li><a href="#wake-up-task-behavior">Wake Up Task Behavior</a></li>
+			<li><a href="#expected-behavior">Expected Behavior</a></li>
+			<li><a href="#check-notifications-received">Check Notifications Received</a></li>
+			<li><a href="#debugging-monitor">Debugging Monitor</a></li>
+	      </ul>
+	
       </ul>
     </li>
 	<li><a href="#comments">Comments</a></li>
@@ -59,7 +62,7 @@ pressed then the queue receive task will blink the red LED indicating that data 
 
 #### Check Notifications Received
 
-### Debugging Monitor
+#### Debugging Monitor
 <p>
 The queue send task writes to the queue every 200ms, so every 200ms the queue receive task will blink the green LED indicating that data was received on the queue from the queue send task.
 <p align="center">
