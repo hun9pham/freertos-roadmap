@@ -39,6 +39,7 @@
       ├── Task manipulation
       ├── InterTask comunication using Queues
       ├── Software Timer type one - shot
+      ├── Direct to task notifications
 ├── CheckList.xlsx				: Describe the learning path to research about freeRTOS
 
 ```
