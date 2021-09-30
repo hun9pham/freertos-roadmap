@@ -74,7 +74,7 @@ Set macro configUSE_IDLE_HOOK in FreeRTOSConfig.h to 0.<br>
 Task sends a notification by using xTaskNotifyGive(). More about <a href = "https://www.freertos.org/xTaskNotifyGive.html" target = "blank">xTaskNotifyGive()</a>
 </p>
 <p align="center">
-  <img src="images/xTaskNotifyGive.png" width="350" title="hover text">
+  <img src="images/xTaskNotifyGive.png" width="750" title="hover text">
 </p>
 <p>
 Task sends a notification by using xTaskNotify() and respectively the 3rd parameter passed into. More about <a href = "https://www.freertos.org/xTaskNotify.html" target = "blank">xTaskNotify()</a>
