@@ -13,8 +13,10 @@
       <a href="#about-the-project">About The Project</a>
       <ul>
         <li><a href="#overview">Overview</a></li>
+	      	<li><a href="#wake-up-task-behavior">Wake Up Task Behavior</a></li>
 		<li><a href="#expected-behavior">Expected Behavior</a></li>
-		<li><a href="#project-structure">Project Structure</a></li>
+		<li><a href="#check-notifications-received">Check Notifications Received</a></li>
+	     	<li><a href="#debugging-monitor">Debugging Monitor</a></li>
       </ul>
     </li>
 	<li><a href="#comments">Comments</a></li>
@@ -31,9 +33,8 @@
 This project is built on the EK-TM4C123GXL development board.
 
 ### Overview
-This project consists of two section: Debug and Not Debug. <br>
-#### Not Debug section:
-<strong>Not Debug section:</strong><br>
+This project consists of two section: Check Notifications Received and Wake Up Task Behavior. <br>
+#### Wake Up Task Behavior
 In this section, the project will simulate waking up a task from interrupt. Specifically, this task when created will be in a block state and wait for a notification to be sent from the Interrupt Service Routine. When receiving the notification, the task will leave the block state and execute its work.<br>
 * Task 1 – The Wake Up Task:<br>
 The wake up task is implemented by the vTaskWakeUp() function in file main. When enabling the scheduler to start with the vTaskStartScheduler() function, this task will wait for a notification by using the API function ulTaskNotifyTake().<br>
@@ -44,9 +45,21 @@ An idle task hook is a function that is called during each cycle of the idle tas
 Make macro DEBUG_ becomes comment or deletes it.<br>
 Set macro configUSE_IDLE_HOOK in FreeRTOSConfig.h to 1.<br>
 
-<strong>Debug section:</strong>
+#### Expected Behavior
+<p>
+The queue send task writes to the queue every 200ms, so every 200ms the queue receive task will blink the green LED indicating that data was received on the queue from the queue send task.
+<p align="center">
+  <img src="images/GreenLED.jpg" width="350" title="hover text">
+</p>
+The queue send software timer has a period of two seconds, and is reset each time SW1 is pressed.  So if two seconds expire without SW1 being
+pressed then the queue receive task will blink the red LED indicating that data was received on the queue from the queue send software timer.
+<p align="center">
+  <img src="images/RedLED.jpg" width="350" title="hover text">
+</p>
 
-### Expected Behavior
+#### Check Notifications Received
+
+### Debugging Monitor
 <p>
 The queue send task writes to the queue every 200ms, so every 200ms the queue receive task will blink the green LED indicating that data was received on the queue from the queue send task.
 <p align="center">
