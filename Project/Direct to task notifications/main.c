@@ -22,14 +22,14 @@
 
 #ifndef DEBUG_
 	/* Priority level of tasks execute */
-	#define mainWAKEUP_TASK_PRIORITY								(tskIDLE_PRIORITY + 1)
+	#define mainWAKEUP_TASK_PRIORITY		(tskIDLE_PRIORITY + 1)
 
 	/* Frequency blinky of LEDs */
-	#define mainFREQUENCY_BLINKY_LEDs								(pdMS_TO_TICKS(300U))
+	#define mainFREQUENCY_BLINKY_LEDs		(pdMS_TO_TICKS(300U))
 #else
 	/* Priority level of tasks execute */
-	#define mainSENDER_TASK_PRIORITY								(tskIDLE_PRIORITY + 2)
-	#define mainRECEIVE_TASK_PRIORITY								(tskIDLE_PRIORITY + 1)
+	#define mainSENDER_TASK_PRIORITY		(tskIDLE_PRIORITY + 2)
+	#define mainRECEIVE_TASK_PRIORITY		(tskIDLE_PRIORITY + 1)
 #endif
 
 /*--------------------------------DECLARE GLOBAL VARIABLES--------------------------------*/
@@ -75,19 +75,19 @@ int main(){
 	/* SystemCoreClock as 80MHz */
 	SystemCoreClock = SysCtlClockGet();
 #ifndef DEBUG_
-	xTaskCreate(vTaskWakeUp,				/* The function that implements the task 			*/
-				(const char *)"WakeUp", 	/* The text name assigned to the task 				*/
+	xTaskCreate(vTaskWakeUp,				/* The function that implements the task 		*/
+				(const char *)"WakeUp", 	/* The text name assigned to the task 			*/
 				configMINIMAL_STACK_SIZE, 	/* The size of the stack to allocate to the task 	*/
-				NULL, 						/* The parameter passed to the task 				*/
-				mainWAKEUP_TASK_PRIORITY,	/* The priority assigned to the task				*/
-				&g_xTaskWaken);				/* The task handle 			 						*/
+				NULL, 				/* The parameter passed to the task 			*/
+				mainWAKEUP_TASK_PRIORITY,	/* The priority assigned to the task			*/
+				&g_xTaskWaken);			/* The task handle 			 		*/
 #else
-	xTaskCreate(vDEBUG_TaskReceive,			/* The function that implements the task 			*/
-				(const char *)"Receive", 	/* The text name assigned to the task 				*/
+	xTaskCreate(vDEBUG_TaskReceive,				/* The function that implements the task 		*/
+				(const char *)"Receive", 	/* The text name assigned to the task 			*/
 				configMINIMAL_STACK_SIZE, 	/* The size of the stack to allocate to the task 	*/
-				NULL, 						/* The parameter passed to the task  				*/
-				mainRECEIVE_TASK_PRIORITY,	/* The priority assigned to the task				*/
-				&g_xTaskReceive);			/* The task handle 									*/
+				NULL, 				/* The parameter passed to the task  			*/
+				mainRECEIVE_TASK_PRIORITY,	/* The priority assigned to the task			*/
+				&g_xTaskReceive);		/* The task handle 					*/
 				
 	xTaskCreate(vDEBUG_TaskSend, (const char *)"Send", configMINIMAL_STACK_SIZE, 
 					NULL, mainSENDER_TASK_PRIORITY, &g_xTaskSender);				
