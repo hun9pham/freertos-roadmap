@@ -31,7 +31,19 @@
 This project is built on the EK-TM4C123GXL development board.
 
 ### Overview
-This project uses FreeRTOS's AIP function to create two task, one software timer, one queue. It then starts the scheduler.
+This project consists of two section: Debug and Not Debug.
+Not Debug section
+In this section, the project will simulate waking up a task from interrupt. Specifically, this task when created will be in a block state and wait for a notification to be sent from the Interrupt Service Routine. When receiving the notification, the task will leave the block state and execute its work.
+* Task 1 – The Wake Up Task:
+The wake up task is implemented by the vTaskWakeUp() function in file main. When enabling the scheduler to start with the vTaskStartScheduler() function, this task will wait for a notification by using the API function ulTaskNotifyTake().
+This project uses an external interrupt, specifically on port F pin 0 (Switch 1). When interrupt occurs (Switch 1 is pressed), a notification will be sent to the task to wake up this task. When the task wakes up, the green LED will blink with a period of 300ms.
+* Task 2 – The Task Idle Hook
+An idle task hook is a function that is called during each cycle of the idle task. This task will turn on the red LED, indicating that when task 1 has not woken up, the idle task will be executed when there are no other tasks with higher priority in the ready state. The task idle hook is implemented by the vApplicationIdleHook().
+Setup for this section:
+Make macro DEBUG_ becomes comment or deletes it.
+Set macro configUSE_IDLE_HOOK in FreeRTOSConfig.h to 1.
+
+
 * Task 1 - The Queue Send Task<br>
 The queue send task is implemented by the QueueSendTask() function in this file.  It uses vTaskDelayUntil() to create a periodic task that sends the value 100 to the queue every 200 milliseconds.<br>
 Software timer callback function - The Queue Send Software Timer:
@@ -83,7 +95,7 @@ In addition to the FreeRTOS API functions, a peripheral driver library from TI i
 
 Author - [PHAM NGUYEN QUOC HUNG](https://hun9pham.github.io) - hungpham99er@gmail.com
 
-Project Link: [Souce code](https://github.com/hun9pham/freertos-work/tree/main/Project/Software%20Timer%20type%20one%20-%20shot)
+Project Link: [Souce code](https://github.com/hun9pham/freertos-roadmap/tree/main/Project/Direct%20to%20task%20notifications)
 
 
 
@@ -93,6 +105,6 @@ Project Link: [Souce code](https://github.com/hun9pham/freertos-work/tree/main/P
 * [Task Creation](https://www.freertos.org/a00019.html)
 * [Task Control](https://www.freertos.org/a00112.html)
 * [Task Utilities](https://www.freertos.org/a00021.html)
-* [Queue Management](https://www.freertos.org/a00018.html)
-* [Software Timer](https://www.freertos.org/FreeRTOS-Software-Timer-API-Functions.html)
+* [RTOS Task Notifications](https://www.freertos.org/RTOS-task-notification-API.html)
+* [The Task Idle Hook](https://www.freertos.org/RTOS-idle-task.html)
 
