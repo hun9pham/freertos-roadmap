@@ -31,27 +31,17 @@
 This project is built on the EK-TM4C123GXL development board.
 
 ### Overview
-This project consists of two section: Debug and Not Debug.
-Not Debug section
-In this section, the project will simulate waking up a task from interrupt. Specifically, this task when created will be in a block state and wait for a notification to be sent from the Interrupt Service Routine. When receiving the notification, the task will leave the block state and execute its work.
-* Task 1 – The Wake Up Task:
-The wake up task is implemented by the vTaskWakeUp() function in file main. When enabling the scheduler to start with the vTaskStartScheduler() function, this task will wait for a notification by using the API function ulTaskNotifyTake().
-This project uses an external interrupt, specifically on port F pin 0 (Switch 1). When interrupt occurs (Switch 1 is pressed), a notification will be sent to the task to wake up this task. When the task wakes up, the green LED will blink with a period of 300ms.
-* Task 2 – The Task Idle Hook
-An idle task hook is a function that is called during each cycle of the idle task. This task will turn on the red LED, indicating that when task 1 has not woken up, the idle task will be executed when there are no other tasks with higher priority in the ready state. The task idle hook is implemented by the vApplicationIdleHook().
-Setup for this section:
-Make macro DEBUG_ becomes comment or deletes it.
-Set macro configUSE_IDLE_HOOK in FreeRTOSConfig.h to 1.
-
-
-* Task 1 - The Queue Send Task<br>
-The queue send task is implemented by the QueueSendTask() function in this file.  It uses vTaskDelayUntil() to create a periodic task that sends the value 100 to the queue every 200 milliseconds.<br>
-Software timer callback function - The Queue Send Software Timer:
-The timer is a one - shot timer that is reset by a SW1 press. The timer's period is set to two seconds - if the timer expires then its callback function writes the value 200 to the queue.  The callback function is implemented by QueueSendTimerCallback() within this file.
-When SW1 is pressed, the interrupt on GPIOF pin 0 will occur and the handle function for this interrupt has named SwitchHandler().<br>
-* Task 2 - The Queue Receive Task<br>
-The queue receive task is implemented by the QueueReceiveTask() function in this file.  QueueReceiveTask() waits for data to arrive on the queue.
-When data is received, the task checks the value of the data, then blinks the green LED to indicate that the data came from task 1 and the red LED to indicate that it came from the queue send software timer.
+This project consists of two section: Debug and Not Debug. <br>
+* Not Debug section: <br>
+In this section, the project will simulate waking up a task from interrupt. Specifically, this task when created will be in a block state and wait for a notification to be sent from the Interrupt Service Routine. When receiving the notification, the task will leave the block state and execute its work.<br>
+** Task 1 – The Wake Up Task:<br>
+The wake up task is implemented by the vTaskWakeUp() function in file main. When enabling the scheduler to start with the vTaskStartScheduler() function, this task will wait for a notification by using the API function ulTaskNotifyTake().<br>
+This project uses an external interrupt, specifically on port F pin 0 (Switch 1). When interrupt occurs (Switch 1 is pressed), a notification will be sent to the task to wake up this task. When the task wakes up, the green LED will blink with a period of 300ms.<br>
+** Task 2 – The Task Idle Hook<br>
+An idle task hook is a function that is called during each cycle of the idle task. This task will turn on the red LED, indicating that when task 1 has not woken up, the idle task will be executed when there are no other tasks with higher priority in the ready state. The task idle hook is implemented by the vApplicationIdleHook().<br>
+Setup for this section:<br>
+Make macro DEBUG_ becomes comment or deletes it.<br>
+Set macro configUSE_IDLE_HOOK in FreeRTOSConfig.h to 1.<br>
 
 ### Expected Behavior
 <p>
