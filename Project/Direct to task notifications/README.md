@@ -49,14 +49,13 @@ Set macro configUSE_IDLE_HOOK in FreeRTOSConfig.h to 1.<br>
 
 #### Expected Behavior
 <p>
-The queue send task writes to the queue every 200ms, so every 200ms the queue receive task will blink the green LED indicating that data was received on the queue from the queue send task.
+When the task 1 which has higher priority than the idle task has not been woken up by the interrupt, then the idle task will take over the execution (turn on the red LED).
 <p align="center">
-  <img src="images/GreenLED.jpg" width="350" title="hover text">
+  <img src="images/RedLED.png" width="350" title="hover text">
 </p>
-The queue send software timer has a period of two seconds, and is reset each time SW1 is pressed.  So if two seconds expire without SW1 being
-pressed then the queue receive task will blink the red LED indicating that data was received on the queue from the queue send software timer.
+When task 1 is woken up by the notification received from interrupt (switch 1 is pressed), now task 1 will start executing its work (blinking the green LED).
 <p align="center">
-  <img src="images/RedLED.jpg" width="350" title="hover text">
+  <img src="images/GreenRedLED.png" width="350" title="hover text">
 </p>
 
 #### Check Notifications Received
