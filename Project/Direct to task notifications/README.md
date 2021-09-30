@@ -64,7 +64,8 @@ This section consists of two tasks: Task sends notifications and Task receives n
 This task uses the API function xTaskNotifyWait() to wait for the notification to be sent from the sending task. If no notification is sent, the task will enter the block state and wait until the notification appears. This is the meaning of the 4th parameter of the xTaskNotifyWait() function (portMAX_DELAY).<br>
 * Task sends notifications - vDEBUG_TaskSend()<br>
 This task uses API functions xTaskNotifyGive() and xTaskNotify respectively with different parameters.<br>
-<italic>The purpose of this section is added to better understand about the types of notification that the task receives.</italic>
+
+The purpose of this section is added to better understand about the types of notification that the task receives.<br>
 * Setup for this section:<br>
 Define macro DEBUG_ (#define DEBUG_) at the top file after include libraries.<br>
 Set macro configUSE_IDLE_HOOK in FreeRTOSConfig.h to 0.<br>
