@@ -71,7 +71,7 @@ Define macro DEBUG_ (#define DEBUG_) at the top file after include libraries.<br
 Set macro configUSE_IDLE_HOOK in FreeRTOSConfig.h to 0.<br>
 #### Debugging Monitor
 <p>
-Task sends a notification by using xTaskNotifyGive(). More about [xTaskNotifyGive()](https://www.freertos.org/xTaskNotifyGive.html)
+Task sends a notification by using xTaskNotifyGive(). More about [xTaskNotifyGive](https://www.freertos.org/xTaskNotifyGive.html)
 <p align="center">
   <img src="images/xTaskNotifyGive.png" width="250" title="hover text">
 </p>
