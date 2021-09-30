@@ -79,21 +79,23 @@ Task sends a notification by using xTaskNotifyGive(). More about <a href = "http
 <p>
 Task sends a notification by using xTaskNotify() and respectively the 3rd parameter passed into. More about <a href = "https://www.freertos.org/xTaskNotify.html" target = "blank">xTaskNotify()</a>
 </p>
-* 3rd parameter: eIncrement
+3rd parameter: eIncrement
 <p align="center">
   <img src="images/xTaskNotify_eIncrement.png" width="350" title="hover text">
 </p>
-* 3rd parameter: eNoAction
+3rd parameter: eNoAction
 <p align="center">
   <img src="images/xTaskNotify_eNoAction.png" width="350" title="hover text">
 </p>
-* 3rd parameter: eSetBits
+3rd parameter: eSetBits
 <p align="center">
   <img src="images/xTaskNotify_eSetBits.png" width="350" title="hover text">
 </p>
-* 3rd parameter: eSetValueWithOverwrite
+3rd parameter: eSetValueWithOverwrite (The counter variable represents the number of times the task received the notification)
 <p align="center">
   <img src="images/xTaskNotify_eSetValueWithOverwrite_cnt_0.png" width="350" title="hover text">
+  <img src="images/xTaskNotify_eSetValueWithOverwrite_cnt_1.png" width="350" title="hover text">
+  <img src="images/xTaskNotify_eSetValueWithOverwrite_cnt_2.png" width="350" title="hover text">
 </p>
 
 
