@@ -51,11 +51,11 @@ Set macro configUSE_IDLE_HOOK in FreeRTOSConfig.h to 1.<br>
 <p>
 When the task 1 which has higher priority than the idle task has not been woken up by the interrupt, then the idle task will take over the execution (turn on the red LED).
 <p align="center">
-  <img src="images/RedLED.png" width="350" title="hover text">
+  <img src="images/RedLED.png" width="275" title="hover text">
 </p>
 When task 1 is woken up by the notification received from interrupt (switch 1 is pressed), now task 1 will start executing its work (blinking the green LED).
 <p align="center">
-  <img src="images/GreenRedLED.png" width="350" title="hover text">
+  <img src="images/GreenRedLED.png" width="275" title="hover text">
 </p>
 
 #### Check Notifications Received
