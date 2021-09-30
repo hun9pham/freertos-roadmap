@@ -81,21 +81,21 @@ Task sends a notification by using xTaskNotify() and respectively the 3rd parame
 </p>
 3rd parameter: eIncrement
 <p align="center">
-  <img src="images/xTaskNotify_eIncrement.png" width="350" title="hover text">
+  <img src="images/xTaskNotify_eIncrement.png" width="750" title="hover text">
 </p>
 3rd parameter: eNoAction
 <p align="center">
-  <img src="images/xTaskNotify_eNoAction.png" width="350" title="hover text">
+  <img src="images/xTaskNotify_eNoAction.png" width="750" title="hover text">
 </p>
 3rd parameter: eSetBits
 <p align="center">
-  <img src="images/xTaskNotify_eSetBits.png" width="350" title="hover text">
+  <img src="images/xTaskNotify_eSetBits.png" width="750" title="hover text">
 </p>
 3rd parameter: eSetValueWithOverwrite (The counter variable represents the number of times the task received the notification)
 <p align="center">
-  <img src="images/xTaskNotify_eSetValueWithOverwrite_cnt_0.png" width="350" title="hover text">
-  <img src="images/xTaskNotify_eSetValueWithOverwrite_cnt_1.png" width="350" title="hover text">
-  <img src="images/xTaskNotify_eSetValueWithOverwrite_cnt_2.png" width="350" title="hover text">
+  <img src="images/xTaskNotify_eSetValueWithOverwrite_cnt_0.png" width="750" title="hover text">
+  <img src="images/xTaskNotify_eSetValueWithOverwrite_cnt_1.png" width="750" title="hover text">
+  <img src="images/xTaskNotify_eSetValueWithOverwrite_cnt_2.png" width="750" title="hover text">
 </p>
 
 
