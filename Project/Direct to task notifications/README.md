@@ -71,14 +71,26 @@ Define macro DEBUG_ (#define DEBUG_) at the top file after include libraries.<br
 Set macro configUSE_IDLE_HOOK in FreeRTOSConfig.h to 0.<br>
 #### Debugging Monitor
 <p>
-Task sends a notification by using xTaskNotifyGive(). More about <a href = "https://www.freertos.org/xTaskNotifyGive.html">xTaskNotifyGive()</a>
+Task sends a notification by using xTaskNotifyGive(). More about <a href = "https://www.freertos.org/xTaskNotifyGive.html" target = "blank">xTaskNotifyGive()</a>
 <p align="center">
-  <img src="images/xTaskNotifyGive.png" width="250" title="hover text">
+  <img src="images/xTaskNotifyGive.png" width="350" title="hover text">
 </p>
-The queue send software timer has a period of two seconds, and is reset each time SW1 is pressed.  So if two seconds expire without SW1 being
-pressed then the queue receive task will blink the red LED indicating that data was received on the queue from the queue send software timer.
+Task sends a notification by using xTaskNotify() and respectively the 3rd parameter passed into. More about <a href = "https://www.freertos.org/xTaskNotify.html" target = "blank">xTaskNotify()</a><br>
+* 3rd parameter: eIncrement
 <p align="center">
-  <img src="images/RedLED.jpg" width="350" title="hover text">
+  <img src="images/xTaskNotify_eIncrement.png" width="350" title="hover text">
+</p>
+* 3rd parameter: eNoAction
+<p align="center">
+  <img src="images/xTaskNotify_eNoAction.png" width="350" title="hover text">
+</p>
+* 3rd parameter: eSetBits
+<p align="center">
+  <img src="images/xTaskNotify_eSetBits.png" width="350" title="hover text">
+</p>
+* 3rd parameter: eSetValueWithOverwrite
+<p align="center">
+  <img src="images/xTaskNotify_eSetValueWithOverwrite_cnt_0.png" width="350" title="hover text">
 </p>
 
 
