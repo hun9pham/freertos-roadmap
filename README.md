@@ -1,7 +1,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <h1 align="center">Task manipulation</h1>
+  <h1 align="center">FreeRTOS Project Repository</h1>
   
   
 
@@ -10,85 +10,40 @@
   <summary>Table of Contents</summary>
   <ol>
     <li>
-      <a href="#about-the-project">About The Project</a>
+      <a href="#about-the-project">Introduction</a>
       <ul>
         <li><a href="#overview">Overview</a></li>
-		<li><a href="#expected-behavior">Expected Behavior</a></li>
-		<li><a href="#project-structure">Project Structure</a></li>
+		    <li><a href="#project-structure">Repository Structure</a></li>
       </ul>
     </li>
-	<li><a href="#comments">Comments</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="#references">References</a></li>
   </ol>
 </details>
 
 
 
-<!-- ABOUT THE PROJECT -->
-## About The Project
-
-This project is built on the EK-TM4C123GXL development board.
+<!-- INTRODUCTION -->
+## Introduction
 
 ### Overview
+* This repository will store the projects I worked on while learning about freeRTOS (on the EK-TM4C123GXL development board). Each project will have README.md files that describe the specific operation of the code and reference links to the API functions used.<br>
+* Each project is implemented according to the most conventional code, for each line of code there is a specific comment for easy maintenance and reading.<br>
+* Check out my [CheckList.xlsx](https://github.com/hun9pham/freertos-work/blob/main/CheckList.xlsx) to see my roadmap.
 
-This project uses FreeRTOS's AIP function to create two task and be described below. After starts the scheduler, the context switching between two task begin. This example uses heap_2 supporting for delete a task.
-* Task 1 - Blue Led Blinky <br>
-The blue LED blinky is implemented by the void vTask_BlueBlinky() function in file main. It uses vTaskDelayUntil() to create a periodic task and increase the counter variable named g_ui32Counter after two vTaskDelayUntil() function called. At the first time, when counter variable reaches 10 ticks, task 2 will be delete by vTaskDelete() function. After that, every count to 5 ticks by counter variable, task 2 will be created and deleted periodically.
-* Task 2 - Green Led Blinky <br>
-The green LED blinky is implemented by the void vTask_GreenBlinky() function in file main. This task have priority lower than task 1 and it will blink green LED periodically.
 
-### Expected Behavior
-<p>
-First, two LED green and blue blinks together.
-<p align="center">
-  <img src="images/BlueGreenLED.jpg" width="350" title="hover text">
-</p>
-After first 10 tick counts, only just LED blue blinks, and then after every 5 tick counts green blinking tasks will be created and deleted alternately.
-<p align="center">
-  <img src="images/BlueLED.jpg" width="350" title="hover text">
-</p>
-
-### Project Structure
+### Repository Structure
 
 ```
-├── README.md              			: Description of project
-├── images              			: Folder contains images of project
-      ├── BlueLED.jpg
-      ├── BlueGreenLED.jpg
-├── driverlib         				: Folder contains TivaWare™ Peripheral Driver Library
-      ├── other peripherals library files
-├── inc						: Folder contains TivaWare™ Peripheral Driver Library
-      ├── other header files
-├── FreeRTOS					: Folder contains FreeRTOS Library
-      ├── License
-      ├── Source
-├── FreeRTOSConfig.h				: Define macro variables for FreeRTOS configuration
-├── delay.h					: Two functions delay in miliseconds and microseconds are declared in this file
-├── delay.c					: Define functions in delay.h
-├── hardware_config.h				: This file configs three LEDs on board, enable the PLL and initialize the bus frequency to 80MHz
-├── hardware_config.c				: Define functions in hardware_config.h
-├── main.c					: Main source code
-├── startup_rvmdk.S				: File startup code for TM4C123G
-│   
-```
+├── README.md              			: Description of this repository
+├── projects         				: All projects placed in this folder
+      ├── Task manipulation
+      ├── InterTask comunication using Queues
+      ├── Software Timer type one - shot
+      ├── Direct to task notifications
+├── CheckList.xlsx				: Describe the learning path to research about freeRTOS
 
-<!-- GETTING STARTED -->
-## Comments
-In addition to the FreeRTOS API functions, a peripheral driver library from TI is used in this example.
+```
 
 <!-- CONTACT -->
 ## Contact
-
-Author - [PHAM NGUYEN QUOC HUNG](https://hun9pham.github.io) - hungpham99er@gmail.com
-
-Project Link: [Souce code](https://github.com/hun9pham/freertos-work/tree/main/Project/Task%20manipulation)
-
-
-
-<!-- References -->
-## References
-* [TivaWare™ Peripheral Driver Library](www.ti.com/lit/ug/spmu298e/spmu298e.pdf)
-* [Task Creation](https://www.freertos.org/a00019.html)
-* [Task Control](https://www.freertos.org/a00112.html)
-* [Task Utilities](https://www.freertos.org/a00021.html)
+Author - [PHAM NGUYEN QUOC HUNG](https://hun9pham.github.io) - hungpham99er@gmail.com - [Linkedin](https://www.linkedin.com/in/pham-hung-a12449213/)
