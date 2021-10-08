@@ -47,7 +47,7 @@ When the scheduler is started, task 2 takes over first because it has a higher p
   <img src="images/RedLED.png" width="350" title="hover text">
   <img src="images/BreakpointTaskDown.png" width="350" title="hover text">
 </p>
-After task 1 releases the mutex and is blocked by vTaskDelayUntil(), task 2 will start executing and take the mutex and turn on green LED to signal.
+After task 1 releases the mutex and is blocked by vTaskDelayUntil(), task 2 will start executing and take the mutex and turn on green LED to signal. When task 1 exits the blocking state, it tries to take over the mutex immediately. This leads to task 2 inheriting precedence from task 1.
 <p align="center">
   <img src="images/GreenLED.png" width="350" title="hover text">
   <img src="images/BreakpointTaskUp.png" width="350" title="hover text">
