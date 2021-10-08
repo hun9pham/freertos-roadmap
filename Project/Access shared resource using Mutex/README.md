@@ -37,18 +37,20 @@ This project creates two tasks to access the global variable g_SharedResource.
 The task up is implemented by the void vTask_ShareResourceUp function and has the priority level below task 2 (specifically 1). This task when accessing the global variable g_SharedResource and make it increase. When the mutex is held by this task, the green led will turn on to signal that this task is occupying the mutex. If the task 2 has priority higher tries to take Mutex, the priority of task 1 will inherit priority from task 2. <br>
 When this task does not hold the mutex, it will wait until the mutex is released via the portMAX_DELAY parameter <br>
 * Task 2 - Task Down <br>
-The task down is implemented by the void vTask_ShareResourceDown() and has the priority level 2. Like task 1, this task will also occupy the mutex when accessing g_SharedResource.<br>
+The task down is implemented by the void vTask_ShareResourceDown() and has the priority level 2. Like task 1, this task will also occupy the mutex when accessing g_SharedResource and make it decrease.<br>
 When this task does not hold the mutex and is not in block state, it will immediately request permission to hold the mutex through the second parameter set to 0 of the xSemaphoreTake() function. 
 
 ### Expected Behavior
 <p>
-First, two LED green and blue blinks together.
+When the scheduler is started, task 2 takes over first because it has a higher priority. Task 2 will occupy the mutex and turn on the red LED. Put the breakpoint at xSemaphoreGive() when debugging. 
 <p align="center">
-  <img src="images/BlueGreenLED.jpg" width="350" title="hover text">
+  <img src="images/RedLED.png" width="350" title="hover text">
+  <img src="images/BreakpointTaskDown.png" width="350" title="hover text">
 </p>
-After first 10 tick counts, only just LED blue blinks, and then after every 5 tick counts green blinking tasks will be created and deleted alternately.
+After task 1 releases the mutex and is blocked by vTaskDelayUntil(), task 2 will start executing and take the mutex and turn on green LED to signal.
 <p align="center">
-  <img src="images/BlueLED.jpg" width="350" title="hover text">
+  <img src="images/GreenLED.png" width="350" title="hover text">
+  <img src="images/BreakpointTaskUp.png" width="350" title="hover text">
 </p>
 
 ### Project Structure
