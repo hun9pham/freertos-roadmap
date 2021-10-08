@@ -1,7 +1,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <h1 align="center">Task manipulation</h1>
+  <h1 align="center">Access Shared Resource using MUTEX</h1>
   
   
 
@@ -32,11 +32,13 @@ This project is built on the EK-TM4C123GXL development board.
 
 ### Overview
 
-This project uses FreeRTOS's AIP function to create two task and be described below. After starts the scheduler, the context switching between two task begin. This example uses heap_2 supporting for delete a task.
-* Task 1 - Blue Led Blinky <br>
-The blue LED blinky is implemented by the void vTask_BlueBlinky() function in file main. It uses vTaskDelayUntil() to create a periodic task and increase the counter variable named g_ui32Counter after two vTaskDelayUntil() function called. At the first time, when counter variable reaches 10 ticks, task 2 will be delete by vTaskDelete() function. After that, every count to 5 ticks by counter variable, task 2 will be created and deleted periodically.
-* Task 2 - Green Led Blinky <br>
-The green LED blinky is implemented by the void vTask_GreenBlinky() function in file main. This task have priority lower than task 1 and it will blink green LED periodically.
+This project creates two tasks to access the global variable g_SharedResource.
+* Task 1 - Task Up <br>
+The task up is implemented by the void vTask_ShareResourceUp function and has the priority level below task 2 (specifically 1). This task when accessing the global variable g_SharedResource and make it increase. When the mutex is held by this task, the green led will turn on to signal that this task is occupying the mutex. If the task 2 has priority higher tries to take Mutex, the priority of task 1 will inherit priority from task 2. <br>
+When this task does not hold the mutex, it will wait until the mutex is released via the portMAX_DELAY parameter <br>
+* Task 2 - Task Down <br>
+The task down is implemented by the void vTask_ShareResourceDown() and has the priority level 2. Like task 1, this task will also occupy the mutex when accessing g_SharedResource.<br>
+When this task does not hold the mutex and is not in block state, it will immediately request permission to hold the mutex through the second parameter set to 0 of the xSemaphoreTake() function. 
 
 ### Expected Behavior
 <p>
@@ -54,8 +56,10 @@ After first 10 tick counts, only just LED blue blinks, and then after every 5 ti
 ```
 ├── README.md              			: Description of project
 ├── images              			: Folder contains images of project
-      ├── BlueLED.jpg
-      ├── BlueGreenLED.jpg
+      ├── BreakdownTaskDown.png
+      ├── BreakdownTaskUp.png
+      ├── GreenLED.png
+      ├── RedLED.png
 ├── driverlib         				: Folder contains TivaWare™ Peripheral Driver Library
       ├── other peripherals library files
 ├── inc						: Folder contains TivaWare™ Peripheral Driver Library
@@ -64,8 +68,6 @@ After first 10 tick counts, only just LED blue blinks, and then after every 5 ti
       ├── License
       ├── Source
 ├── FreeRTOSConfig.h				: Define macro variables for FreeRTOS configuration
-├── delay.h					: Two functions delay in miliseconds and microseconds are declared in this file
-├── delay.c					: Define functions in delay.h
 ├── hardware_config.h				: This file configs three LEDs on board, enable the PLL and initialize the bus frequency to 80MHz
 ├── hardware_config.c				: Define functions in hardware_config.h
 ├── main.c					: Main source code
@@ -82,7 +84,7 @@ In addition to the FreeRTOS API functions, a peripheral driver library from TI i
 
 Author - [PHAM NGUYEN QUOC HUNG](https://hun9pham.github.io) - hungpham99er@gmail.com
 
-Project Link: [Souce code](https://github.com/hun9pham/freertos-work/tree/main/Project/Task%20manipulation)
+Project Link: [Souce code](https://github.com/hun9pham/freertos-roadmap/tree/main/Project/Access%20shared%20resource%20using%20Mutex)
 
 
 
@@ -91,4 +93,4 @@ Project Link: [Souce code](https://github.com/hun9pham/freertos-work/tree/main/P
 * [TivaWare™ Peripheral Driver Library](www.ti.com/lit/ug/spmu298e/spmu298e.pdf)
 * [Task Creation](https://www.freertos.org/a00019.html)
 * [Task Control](https://www.freertos.org/a00112.html)
-* [Task Utilities](https://www.freertos.org/a00021.html)
+* [Semaphore / Mutexs](https://www.freertos.org/a00113.html)
