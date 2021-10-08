@@ -16,7 +16,7 @@
 #include "semphr.h"
 
 /* Priorities at which the tasks are created. */
-#define mainTASK_SHARED_RESOURCE_UP			(tskIDLE_PRIORITY + 1)
+#define mainTASK_SHARED_RESOURCE_UP		(tskIDLE_PRIORITY + 1)
 #define mainTASK_SHARED_RESOURCE_DOWN		(tskIDLE_PRIORITY + 2)
 
 /*--------------------------------DECLARE GLOBAL VARIABLES--------------------------------*/
@@ -29,8 +29,7 @@ TaskHandle_t g_taskUp = NULL;
 TaskHandle_t g_taskDown = NULL;
 bool g_flagGreenLED = true;
 bool g_flagRedLED = true;
-UBaseType_t g_uxPriorityTaskDown;
-UBaseType_t g_uxPriorityTaskUp;
+
 /*--------------------------------END DECLARE GLOBAL VARIABLES-----------------------------*/
 
 /*--------------------------------DECLARE PROTOTYPE FUNCTION-----------------------------*/
@@ -46,15 +45,15 @@ int main(){
 	g_xMutex = xSemaphoreCreateMutex();
 	if (g_xMutex != NULL){
 		/* Create task which receives message from MessageQueue */
-		xTaskCreate(vTask_ShareResourceUp,			/* Function that implements the task */
-							(const char *)"Up", 					/* Task name */
-							configMINIMAL_STACK_SIZE, 		/* The size of the stack to allocate to the task */
-							NULL, 												/* Parameter passed into the task - not used */
-							mainTASK_SHARED_RESOURCE_UP,  /* The priority assigned to the task */
-							&g_taskUp);												/* Task's handle is not used*/
+		xTaskCreate(vTask_ShareResourceUp,	/* Function that implements the task */
+			(const char *)"Up", 		/* Task name */
+			configMINIMAL_STACK_SIZE, 	/* The size of the stack to allocate to the task */
+			NULL, 				/* Parameter passed into the task - not used */
+			mainTASK_SHARED_RESOURCE_UP,  	/* The priority assigned to the task */
+			&g_taskUp);			/* Task's handle is not used*/
 		/* The similar to task sends message to MessageQueue */
 		xTaskCreate(vTask_ShareResourceDown, (const char *)"Down", configMINIMAL_STACK_SIZE, 
-													NULL, mainTASK_SHARED_RESOURCE_DOWN, &g_taskDown);
+					NULL, mainTASK_SHARED_RESOURCE_DOWN, &g_taskDown);
 		
 		/* Start the tasks and timer running */
 		vTaskStartScheduler();
