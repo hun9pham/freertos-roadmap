@@ -40,6 +40,7 @@
       ├── InterTask comunication using Queues
       ├── Software Timer type one - shot
       ├── Direct to task notifications
+      ├── Access shared resource using Mutex
 ├── CheckList.xlsx				: Describe the learning path to research about freeRTOS
 
 ```
