@@ -40,8 +40,8 @@ Both these tasks have the same priority and use the same binary semaphore. After
 <p>
 Both tasks fall into block state and only after button is pressed and binary semaphore will be given (initially when binary semaphore is generated it will be in indeterminate state). Tasks will take turns receiving the semaphore and executing
 <p align="center">
-  <img src="images/LEDOn.jpg" width="350" title="hover text">
   <img src="images/LEDOff.jpg" width="350" title="hover text">
+  <img src="images/LEDOn.jpg" width="350" title="hover text">
 </p>
 
 
