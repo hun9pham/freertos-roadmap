@@ -38,16 +38,12 @@ Both these tasks have the same priority and use the same binary semaphore. After
 
 ### Expected Behavior
 <p>
-When the scheduler is started, task 2 takes over first because it has a higher priority. Task 2 will occupy the mutex and turn on the red LED. Put the breakpoint at xSemaphoreGive() when debugging. 
+Both tasks fall into block state and only after button is pressed and binary semaphore will be given (initially when binary semaphore is generated it will be in indeterminate state). Tasks will take turns receiving the semaphore and executing
 <p align="center">
-  <img src="images/RedLED.png" width="350" title="hover text">
-  <img src="images/BreakpointTaskDown.png" width="350" title="hover text">
+  <img src="images/LEDOn.jpg" width="350" title="hover text">
+  <img src="images/LEDOff.jpg" width="350" title="hover text">
 </p>
-After task 1 releases the mutex and is blocked by vTaskDelayUntil(), task 2 will start executing and take the mutex and turn on green LED to signal. When task 1 exits the blocking state, it tries to take over the mutex immediately. This leads to task 2 inheriting precedence from task 1.
-<p align="center">
-  <img src="images/GreenLED.png" width="350" title="hover text">
-  <img src="images/BreakpointTaskUp.png" width="350" title="hover text">
-</p>
+
 
 ### Project Structure
 
