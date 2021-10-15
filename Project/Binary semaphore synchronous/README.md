@@ -32,13 +32,13 @@ This project is built on the EK-TM4C123GXL development board.
 
 ### Overview
 
-The project create two tasks and an external interrupt on switch 1 to synchronize these tasks using binary semaphore. These two tasks control an group LED (Red - Blue - Green LEDs). “LEDsOn” task turns on LED. Similarly, “LEDsOff” turns off LED.<br>
+The project create two tasks and an external interrupt on switch 1 to synchronize these tasks using binary semaphore. These two tasks control an group LED (Red - Blue - Green LEDs). “LEDsOn” task turns on LEDs. Similarly, “LEDsOff” turns off LEDs.<br>
 
 Both these tasks have the same priority and use the same binary semaphore. After the scheduler starts, both tasks remain in a blocking state unless interrupt occurs and it gives binary semaphore by xSemaphoreGiveFromISR() function. Because equal priority tasks follow a time-sharing scheduling algorithm in FreeRTOS. In response, both tasks will acquire binary semaphore turn by turn.<br>
 
 ### Expected Behavior
 <p>
-Both tasks fall into block state and only after button is pressed and binary semaphore will be given (initially when binary semaphore is generated it will be in indeterminate state). Tasks will take turns receiving the semaphore and executing
+Both tasks fall into block state and only after button is pressed and binary semaphore will be given (initially when binary semaphore is generated it will be in indeterminate state). Tasks will take turns receiving the binary semaphore and executing
 <p align="center">
   <img src="images/LEDOff.jpg" width="350" title="hover text">
   <img src="images/LEDOn.jpg" width="350" title="hover text">
