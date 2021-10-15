@@ -11,10 +11,10 @@
 /* Avoid warning about unused parameters from compiler */
 #define UNUSED(parameter)					do { (void)(parameter); }while(0);
 
-#define SWITCH_1									PINDEF(PORTF, PIN4)
-#define REDLED										PINDEF(PORTF, PIN1)
-#define BLUELED										PINDEF(PORTF, PIN2)
-#define GREENLED									PINDEF(PORTF, PIN3)
+#define SWITCH_1						PINDEF(PORTF, PIN4)
+#define REDLED							PINDEF(PORTF, PIN1)
+#define BLUELED							PINDEF(PORTF, PIN2)
+#define GREENLED						PINDEF(PORTF, PIN3)
 
 /* Priorities at which the tasks are created. */
 #define mainTASK_TURN_LED_ON			(tskIDLE_PRIORITY + 1)
@@ -54,14 +54,14 @@ int main(){
 	if (g_xBinarySemaphore != NULL)
 	{
 		/* Create task */
-		xTaskCreate(vTask_TurnLEDsOff,				/* Function that implements the task */
-							(const char *)"LEDsOff", 	/* Task name */
-							configMINIMAL_STACK_SIZE, /* The size of the stack to allocate to the task */
-							NULL, 										/* Parameter passed into the task - not used */
-							mainTASK_TURN_LED_OFF,  		/* The priority assigned to the task */
-							NULL);										/* Task's handle is not used*/
+		xTaskCreate(vTask_TurnLEDsOff,		/* Function that implements the task */
+			(const char *)"LEDsOff", 	/* Task name */
+			configMINIMAL_STACK_SIZE, 	/* The size of the stack to allocate to the task */
+			NULL, 				/* Parameter passed into the task - not used */
+			mainTASK_TURN_LED_OFF,  	/* The priority assigned to the task */
+			NULL);				/* Task's handle is not used*/
 		xTaskCreate(vTask_TurnLEDsOn, (const char *)"LEDsOn", configMINIMAL_STACK_SIZE, 
-													NULL, mainTASK_TURN_LED_ON, NULL);
+							NULL, mainTASK_TURN_LED_ON, NULL);
 		/* Start the tasks and timer running */
 		vTaskStartScheduler();
 	}
