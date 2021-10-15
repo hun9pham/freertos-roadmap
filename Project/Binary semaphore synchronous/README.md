@@ -1,7 +1,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <h1 align="center">Access Shared Resource using MUTEX</h1>
+  <h1 align="center">Binary Semaphore Interrupt Synchronization</h1>
   
   
 
@@ -32,13 +32,9 @@ This project is built on the EK-TM4C123GXL development board.
 
 ### Overview
 
-This project creates two tasks to access the global variable g_SharedResource.
-* Task 1 - Task Up <br>
-The task up is implemented by the void vTask_ShareResourceUp function and has the priority level below task 2 (specifically 1). This task when accessing the global variable g_SharedResource and make it increase. When the mutex is held by this task, the green led will turn on to signal that this task is occupying the mutex. If the task 2 has priority higher tries to take Mutex, the priority of task 1 will inherit priority from task 2. <br>
-When this task does not hold the mutex, it will wait until the mutex is released via the portMAX_DELAY parameter <br>
-* Task 2 - Task Down <br>
-The task down is implemented by the void vTask_ShareResourceDown() and has the priority level 2. Like task 1, this task will also occupy the mutex when accessing g_SharedResource and make it decrease.<br>
-When this task does not hold the mutex and is not in block state, it will immediately request permission to hold the mutex through the second parameter set to 0 of the xSemaphoreTake() function. 
+The project create two tasks and an external interrupt on switch 1 to synchronize these tasks using binary semaphore. These two tasks control an group LED (Red - Blue - Green LEDs). “LEDsOn” task turns on LED. Similarly, “LEDsOff” turns off LED.<br>
+
+Both these tasks have the same priority and use the same binary semaphore. After the scheduler starts, both tasks remain in a blocking state unless interrupt occurs and it gives binary semaphore by xSemaphoreGiveFromISR() function. Because equal priority tasks follow a time-sharing scheduling algorithm in FreeRTOS. In response, both tasks will acquire binary semaphore turn by turn.<br>
 
 ### Expected Behavior
 <p>
@@ -58,20 +54,21 @@ After task 1 releases the mutex and is blocked by vTaskDelayUntil(), task 2 will
 ```
 ├── README.md              			: Description of project
 ├── images              			: Folder contains images of project
-      ├── BreakdownTaskDown.png
-      ├── BreakdownTaskUp.png
-      ├── GreenLED.png
-      ├── RedLED.png
-├── driverlib         				: Folder contains TivaWare™ Peripheral Driver Library
-      ├── other peripherals library files
-├── inc						: Folder contains TivaWare™ Peripheral Driver Library
-      ├── other header files
+      ├── LEDOn.jpg
+      ├── LEDOff.jpg
 ├── FreeRTOS					: Folder contains FreeRTOS Library
       ├── License
       ├── Source
+├── tm4c_lib					: TM4C123G Library GPIO, NVIC, Phase locked loop
+      ├── tm4c123gh6pm.h
+      ├── tm4c_lib.h
+      ├── tm4c_gpio.h
+      ├── tm4c_gpio.c
+      ├── tm4c_nvic.h
+      ├── tm4c_nvic.c
+      ├── tm4c_pll.h
+      ├── tm4c_pll.c
 ├── FreeRTOSConfig.h				: Define macro variables for FreeRTOS configuration
-├── hardware_config.h				: This file configs three LEDs on board, enable the PLL and initialize the bus frequency to 80MHz
-├── hardware_config.c				: Define functions in hardware_config.h
 ├── main.c					: Main source code
 ├── startup_rvmdk.S				: File startup code for TM4C123G
 │   
@@ -79,14 +76,14 @@ After task 1 releases the mutex and is blocked by vTaskDelayUntil(), task 2 will
 
 <!-- GETTING STARTED -->
 ## Comments
-In addition to the FreeRTOS API functions, a peripheral driver library from TI is used in this example.
+In this project I'm not using the library from Texas Instrument, instead it's a library I've built with multiple references source.
 
 <!-- CONTACT -->
 ## Contact
 
 Author - [PHAM NGUYEN QUOC HUNG](https://hun9pham.github.io) - hungpham99er@gmail.com
 
-Project Link: [Souce code](https://github.com/hun9pham/freertos-roadmap/tree/main/Project/Access%20shared%20resource%20using%20Mutex)
+Project Link: [Souce code](https://github.com/hun9pham/freertos-roadmap/tree/main/Project/Binary%20semaphore%20synchronous)
 
 
 
