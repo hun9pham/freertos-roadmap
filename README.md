@@ -41,6 +41,7 @@
       ├── Software Timer type one - shot
       ├── Direct to task notifications
       ├── Access shared resource using Mutex
+      ├── Binary semaphore synchronous
 ├── CheckList.xlsx				: Describe the learning path to research about freeRTOS
 
 ```
