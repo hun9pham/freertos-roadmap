@@ -32,7 +32,7 @@ This project is built on the EK-TM4C123GXL development board.
 
 ### Overview
 
-The project will create 3 tasks named "BlueLED", "GreenLED", "RedLED" and a Counting Semaphore with a max value of 3. Each task with its name will control different LEDs. Each task after being initialized will wait to take the Semaphore (xSemaphoreTake() function).<br>
+The project will create 3 tasks (the same priority) named "BlueLED", "GreenLED", "RedLED" and a Counting Semaphore with a max value of 3. Each task with its name will control different LEDs. Each task after being initialized will wait to take the Semaphore (xSemaphoreTake() function).<br>
 Each time an interrupt is triggered by switch 1, a semaphore will be given and the task that received the semaphore will exit the block state and execute its job.<br>
 Each time there is a change in LED state, the number of times the event (ISR) is occurred.
 
