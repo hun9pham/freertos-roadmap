@@ -12,17 +12,17 @@
 /* Avoid warning about unused parameters from compiler */
 #define UNUSED(parameter)					do { (void)(parameter); }while(0);
 
-#define REDLED										PINDEF(PORTF, PIN1)
-#define BLUELED										PINDEF(PORTF, PIN2)
-#define GREENLED									PINDEF(PORTF, PIN3)
+#define REDLED							PINDEF(PORTF, PIN1)
+#define BLUELED							PINDEF(PORTF, PIN2)
+#define GREENLED						PINDEF(PORTF, PIN3)
 
 /* Priorities at which the tasks are created. */
 #define mainTASK_LED_RED					(tskIDLE_PRIORITY + 1)
 #define mainTASK_LED_BLUE					(tskIDLE_PRIORITY + 1)
-#define mainTASK_LED_GREEN				(tskIDLE_PRIORITY + 1)
+#define mainTASK_LED_GREEN					(tskIDLE_PRIORITY + 1)
 
 /* The maximum count value for the semaphore can be reached */
-#define mainMAX_COUNT							((UBaseType_t ) 3)
+#define mainMAX_COUNT						((UBaseType_t ) 3)
 /* The count value assigned to the semaphore when it is created */
 #define mainINITIAL_COUNT					((UBaseType_t ) 0)
 
@@ -64,18 +64,18 @@ int main(){
 	SystemCoreClock = PLL_GetBusClockFreq(); /* SystemCoreClock as 80MHz */
 	g_xCountEvtSemaphore = xSemaphoreCreateCounting(mainMAX_COUNT, mainINITIAL_COUNT);
 	/* Create task */
-	xTaskCreate(vTask_TurnRedLEDsOn,			/* Function that implements the task */
-						(const char *)"RedLED", 		/* Task name */
-						configMINIMAL_STACK_SIZE, 	/* The size of the stack to allocate to the task */
-						NULL, 											/* Parameter passed into the task - not used */
-						mainTASK_LED_RED,  					/* The priority assigned to the task */
-						NULL);											/* Task's handle is not used*/
+	xTaskCreate(vTask_TurnRedLEDsOn,	/* Function that implements the task */
+		(const char *)"RedLED", 	/* Task name */
+		configMINIMAL_STACK_SIZE, 	/* The size of the stack to allocate to the task */
+		NULL, 				/* Parameter passed into the task - not used */
+		mainTASK_LED_RED,  		/* The priority assigned to the task */
+		NULL);				/* Task's handle is not used*/
 						
 	xTaskCreate(vTask_TurnBlueLEDsOn, (const char *)"BlueLED", configMINIMAL_STACK_SIZE, 
-												NULL, mainTASK_LED_BLUE, NULL);
+									NULL, mainTASK_LED_BLUE, NULL);
 	
 	xTaskCreate(vTask_TurnGreenLEDsOn, (const char *)"GreenLED", configMINIMAL_STACK_SIZE, 
-												NULL, mainTASK_LED_GREEN, NULL);
+									NULL, mainTASK_LED_GREEN, NULL);
 	/* Start the tasks and timer running */
 	vTaskStartScheduler();
 	
