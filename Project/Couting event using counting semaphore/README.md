@@ -1,7 +1,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <h1 align="center">Binary Semaphore Interrupt Synchronization</h1>
+  <h1 align="center">Counting event using Counting Semaphore</h1>
   
   
 
@@ -32,16 +32,16 @@ This project is built on the EK-TM4C123GXL development board.
 
 ### Overview
 
-The project create two tasks and an external interrupt on switch 1 to synchronize these tasks using binary semaphore. These two tasks control an group LED (Red - Blue - Green LEDs). “LEDsOn” task turns on LEDs. Similarly, “LEDsOff” turns off LEDs.<br>
-
-Both these tasks have the same priority and use the same binary semaphore. After the scheduler starts, both tasks remain in a blocking state unless interrupt occurs and it gives binary semaphore by xSemaphoreGiveFromISR() function. Because equal priority tasks follow a time-sharing scheduling algorithm in FreeRTOS. In response, both tasks will acquire binary semaphore turn by turn.<br>
+The project will create 3 tasks named "BlueLED", "GreenLED", "RedLED" and a Counting Semaphore with a max value of 3. Each task with its name will control different LEDs. Each task after being initialized will wait to take the Semaphore (xSemaphoreTake() function).<br>
+Each time an interrupt is triggered by switch 1, a semaphore will be given and the task that received the semaphore will exit the block state and execute its job.<br>
+Each time there is a change in LED state, the number of times the event (ISR) is occurred.
 
 ### Expected Behavior
 <p>
-Both tasks fall into block state and only after button is pressed and binary semaphore will be given (initially when binary semaphore is generated it will be in indeterminate state). Tasks will take turns receiving the binary semaphore and executing
+After each button press, the ISR will appear and call the function xSemaphoreGiveFromISR() to give a semaphore. The task is in a block state because it is waiting for the semaphore to be unblocked and managed by its own toggle LED state. 
 <p align="center">
-  <img src="images/LEDOff.jpg" width="350" title="hover text">
-  <img src="images/LEDOn.jpg" width="350" title="hover text">
+  <img src="images/LEDDemo1.jpg" width="350" title="hover text">
+  <img src="images/LEDDemo2.png" width="350" title="hover text">
 </p>
 
 
@@ -50,8 +50,8 @@ Both tasks fall into block state and only after button is pressed and binary sem
 ```
 ├── README.md              			: Description of project
 ├── images              			: Folder contains images of project
-      ├── LEDOn.jpg
-      ├── LEDOff.jpg
+      ├── LEDDemo1.jpg
+      ├── LEDDemo2.png
 ├── FreeRTOS					: Folder contains FreeRTOS Library
       ├── License
       ├── Source
@@ -79,7 +79,7 @@ In this project I'm not using the library from Texas Instrument, instead it's a 
 
 Author - [PHAM NGUYEN QUOC HUNG](https://hun9pham.github.io) - hungpham99er@gmail.com
 
-Project Link: [Souce code](https://github.com/hun9pham/freertos-roadmap/tree/main/Project/Binary%20semaphore%20synchronous)
+Project Link: [Souce code](https://github.com/hun9pham/freertos-roadmap/tree/main/Project/Couting%20event%20using%20counting%20semaphore)
 
 
 
