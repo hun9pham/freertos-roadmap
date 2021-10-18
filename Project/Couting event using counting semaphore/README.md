@@ -40,7 +40,7 @@ Each time there is a change in LED state, the number of times the event (ISR) is
 <p>
 After each button press, the ISR will appear and call the function xSemaphoreGiveFromISR() to give a semaphore. The task is in a block state because it is waiting for the semaphore to be unblocked and managed by its own toggle LED state. 
 <p align="center">
-  <img src="images/LEDDemo1.jpg" width="350" title="hover text">
+  <img src="images/LEDDemo1.jpg" width="250" title="hover text">
   <img src="images/LEDDemo2.png" width="350" title="hover text">
 </p>
 
