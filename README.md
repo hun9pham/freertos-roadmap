@@ -13,7 +13,7 @@
       <a href="#about-the-project">Introduction</a>
       <ul>
         <li><a href="#overview">Overview</a></li>
-		    <li><a href="#project-structure">Projects</a></li>
+		    <li><a href="#projects">Projects</a></li>
       </ul>
     </li>
     <li><a href="#contact">Contact</a></li>
