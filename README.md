@@ -13,7 +13,7 @@
       <a href="#about-the-project">Introduction</a>
       <ul>
         <li><a href="#overview">Overview</a></li>
-		    <li><a href="#project-structure">Repository Structure</a></li>
+		    <li><a href="#projects">Projects</a></li>
       </ul>
     </li>
     <li><a href="#contact">Contact</a></li>
@@ -31,20 +31,17 @@
 * Check out my [CheckList.xlsx](https://github.com/hun9pham/freertos-work/blob/main/CheckList.xlsx) to see my roadmap.
 
 
-### Repository Structure
+### Projects
+| Firmware       |Descripción			|
+|----------------|-------------------------------|
+|[Task_FreeRTOS](https://github.com/hun9pham/freertos-roadmap/tree/main/Project/Task%20manipulation)         | Task manipulation|
+|[Task Notification](https://github.com/hun9pham/freertos-roadmap/tree/main/Project/Direct%20to%20task%20notifications)   |Direct to task notifications| 
+|[Queues Management](https://github.com/hun9pham/freertos-roadmap/tree/main/Project/InterTask%20comunication%20using%20Queues)   | InterTask comunication using Queues   | 
+|[Software Timer](https://github.com/hun9pham/freertos-roadmap/tree/main/Project/Software%20Timer%20type%20one%20-%20shot)   | Software Timer type one - shot  | 
+|[Mutex](https://github.com/hun9pham/freertos-roadmap/tree/main/Project/Access%20shared%20resource%20using%20Mutex)   | Access shared resource using Mutex | 
+|[Binary Semaphore](https://github.com/hun9pham/freertos-roadmap/tree/main/Project/Binary%20semaphore%20synchronous)   | Binary semaphore synchronous | 
+|[Counting Semaphore](https://github.com/hun9pham/freertos-roadmap/tree/main/Project/Couting%20event%20using%20counting%20semaphore)   | Couting event using counting semaphore | 
 
-```
-├── README.md              			: Description of this repository
-├── projects         				: All projects placed in this folder
-      ├── Task manipulation
-      ├── InterTask comunication using Queues
-      ├── Software Timer type one - shot
-      ├── Direct to task notifications
-      ├── Access shared resource using Mutex
-      ├── Binary semaphore synchronous
-├── CheckList.xlsx				: Describe the learning path to research about freeRTOS
-
-```
 
 <!-- CONTACT -->
 ## Contact
