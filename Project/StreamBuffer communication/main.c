@@ -1,8 +1,7 @@
-/* Set configUSE_COUNTING_SEMAPHORES in FreeRTOSConfig.h header file to 1 for usage */
 #include <stdint.h>
 #include <stdbool.h>
 #include <string.h>
-#include "HAL/HAL.h"
+#include "tm4c_lib/tm4c_lib.h"
 
 /* Include FreeRTOS library */
 #include <FreeRTOS.h>
@@ -56,8 +55,8 @@ int main(){
 	
 	GPIO_EnableDO(PORTF, PIN1 | PIN3, DRIVE_2MA, PULL_DOWN); /* Enable 3 LEDs on board as output */
 	/* Get bit-band address peripherals */
-	g_RedLED = GPIO_GetBitBandIOAddress(&mainREDLED);
-	g_GreenLED = GPIO_GetBitBandIOAddress(&mainGREENLED);
+	g_RedLED = GPIO_BitBandPheripheralAddress(&mainREDLED);
+	g_GreenLED = GPIO_BitBandPheripheralAddress(&mainGREENLED);
 	
 	/* Turn off LEDs */
 	(*g_RedLED) = 0;
