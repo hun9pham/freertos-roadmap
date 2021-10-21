@@ -96,14 +96,12 @@ void vTask_Sender(void * param)
 		{
 			if (flagToggleSend)
 			{
-				g_xByteSent = xStreamBufferSend(xStreamBuffer, (void *)stringControlRedLED,
-																				strlen(stringControlRedLED), 0);
+				g_xByteSent = xStreamBufferSend(xStreamBuffer, (void *)stringControlRedLED, strlen(stringControlRedLED), 0);
 				flagToggleSend = false;
 			}
 			else
 			{
-				g_xByteSent = xStreamBufferSend(xStreamBuffer, (void *)stringControlGreenLED,
-																				strlen(stringControlGreenLED), 0);
+				g_xByteSent = xStreamBufferSend(xStreamBuffer, (void *)stringControlGreenLED, strlen(stringControlGreenLED), 0);
 				flagToggleSend = true;
 			}
 			
@@ -150,8 +148,7 @@ void vTask_Receiver(void * param)
 		if (sbufferByteExist == g_xByteSent)
 		{
 			memset(BufferRecievie, 0, sizeof(BufferRecievie));
-			xReceivedBytes = xStreamBufferReceive(xStreamBuffer, BufferRecievie, 
-																				sizeof(BufferRecievie), 0);
+			xReceivedBytes = xStreamBufferReceive(xStreamBuffer, BufferRecievie, sizeof(BufferRecievie), 0);
 			strcat(receiverNote, BufferRecievie);
 			strcat(receiverNote, (char *)"\r\n\r\n"); /* New line */
 			if (xReceivedBytes == strlen(stringControlRedLED))
