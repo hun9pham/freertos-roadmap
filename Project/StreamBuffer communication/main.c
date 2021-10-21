@@ -9,14 +9,14 @@
 #include "stream_buffer.h"
 
 /* Avoid warning about unused parameters from compiler */
-#define UNUSED(parameter)					do { (void)(parameter); }while(0);
+#define UNUSED(parameter)				do { (void)(parameter); }while(0);
 
 /* Define pin, port */
-#define mainREDLED										PINDEF(PORTF, PIN1)
-#define mainGREENLED									PINDEF(PORTF, PIN3)
+#define mainREDLED					PINDEF(PORTF, PIN1)
+#define mainGREENLED					PINDEF(PORTF, PIN3)
 
 /* Priorities at which the tasks are created. */
-#define mainTASK_SENDER_PRIO					(tskIDLE_PRIORITY + 1)
+#define mainTASK_SENDER_PRIO				(tskIDLE_PRIORITY + 1)
 #define mainTASK_RECEIVER_PRIO				(tskIDLE_PRIORITY + 2)
 
 /* Define xBufferSizeBytes and xTriggerLevelBytes of StreamBuffer */
