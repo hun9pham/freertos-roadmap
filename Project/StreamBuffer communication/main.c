@@ -9,14 +9,14 @@
 #include "stream_buffer.h"
 
 /* Avoid warning about unused parameters from compiler */
-#define UNUSED(parameter)					do { (void)(parameter); }while(0);
+#define UNUSED(parameter)				do { (void)(parameter); }while(0);
 
 /* Define pin, port */
-#define mainREDLED										PINDEF(PORTF, PIN1)
-#define mainGREENLED									PINDEF(PORTF, PIN3)
+#define mainREDLED					PINDEF(PORTF, PIN1)
+#define mainGREENLED					PINDEF(PORTF, PIN3)
 
 /* Priorities at which the tasks are created. */
-#define mainTASK_SENDER_PRIO					(tskIDLE_PRIORITY + 1)
+#define mainTASK_SENDER_PRIO				(tskIDLE_PRIORITY + 1)
 #define mainTASK_RECEIVER_PRIO				(tskIDLE_PRIORITY + 2)
 
 /* Define xBufferSizeBytes and xTriggerLevelBytes of StreamBuffer */
@@ -96,14 +96,12 @@ void vTask_Sender(void * param)
 		{
 			if (flagToggleSend)
 			{
-				g_xByteSent = xStreamBufferSend(xStreamBuffer, (void *)stringControlRedLED,
-																				strlen(stringControlRedLED), 0);
+				g_xByteSent = xStreamBufferSend(xStreamBuffer, (void *)stringControlRedLED, strlen(stringControlRedLED), 0);
 				flagToggleSend = false;
 			}
 			else
 			{
-				g_xByteSent = xStreamBufferSend(xStreamBuffer, (void *)stringControlGreenLED,
-																				strlen(stringControlGreenLED), 0);
+				g_xByteSent = xStreamBufferSend(xStreamBuffer, (void *)stringControlGreenLED, strlen(stringControlGreenLED), 0);
 				flagToggleSend = true;
 			}
 			
@@ -150,8 +148,7 @@ void vTask_Receiver(void * param)
 		if (sbufferByteExist == g_xByteSent)
 		{
 			memset(BufferRecievie, 0, sizeof(BufferRecievie));
-			xReceivedBytes = xStreamBufferReceive(xStreamBuffer, BufferRecievie, 
-																				sizeof(BufferRecievie), 0);
+			xReceivedBytes = xStreamBufferReceive(xStreamBuffer, BufferRecievie, sizeof(BufferRecievie), 0);
 			strcat(receiverNote, BufferRecievie);
 			strcat(receiverNote, (char *)"\r\n\r\n"); /* New line */
 			if (xReceivedBytes == strlen(stringControlRedLED))
