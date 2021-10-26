@@ -58,7 +58,7 @@ PuTTY's interface (Link references UART Communication TM4C123 Tiva C LaunchPad b
 <p>
 Red LED and Green LED will blink alternatively corresponding to message coming.<br>
 <p align="center">
-  <img src="images/UART5.png" width="450" title="hover text">
+  <img src="images/UART5.png" width="550" title="hover text">
   <img src="images/RedLED.jpg" width="250" title="hover text">
   <img src="images/GreenLED.jpg" width="250" title="hover text">
 </p>
