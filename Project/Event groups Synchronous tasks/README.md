@@ -1,7 +1,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <h1 align="center">Binary Semaphore Interrupt Synchronization</h1>
+  <h1 align="center">Event groups Synchronous tasks</h1>
   
   
 
@@ -32,15 +32,17 @@ This project is built on the EK-TM4C123GXL development board.
 
 ### Overview
 
-The project create two tasks and an external interrupt on switch 1 to synchronize these tasks using binary semaphore. These two tasks control an group LED (Red - Blue - Green LEDs). “LEDsOn” task turns on LEDs. Similarly, “LEDsOff” turns off LEDs.<br>
-
-Both these tasks have the same priority and use the same binary semaphore. After the scheduler starts, both tasks remain in a blocking state unless interrupt occurs and it gives binary semaphore by xSemaphoreGiveFromISR() function. Because equal priority tasks follow a time-sharing scheduling algorithm in FreeRTOS. In response, both tasks will acquire binary semaphore turn by turn.<br>
+The program will create 4 tasks, in which 3 tasks named "Red", "Blue", "Green" will control 3 LEDs respectively, task "Rendezvous" will check the event bits in the event group To perform synchronously turn on all 3 LEDs.<br>
+* vTask_RedLED - vTask_RedLED - vTask_RedLED <br>
+Set the corresponding event bis of the task itself.<br>
+* vTask_PointMeeting <br>
+Wait for the event bits in the event group to be considered to do their job.<br>
 
 ### Expected Behavior
 <p>
-Both tasks fall into block state and only after button is pressed and binary semaphore will be given (initially when binary semaphore is generated it will be in indeterminate state). Tasks will take turns receiving the binary semaphore and executing
+Three LEDs will blink after alternately.<br>
 <p align="center">
-  <img src="images/LEDOff.jpg" width="350" title="hover text">
+  <img src="images/LEDOff.png" width="350" title="hover text">
   <img src="images/LEDOn.jpg" width="350" title="hover text">
 </p>
 
@@ -51,7 +53,7 @@ Both tasks fall into block state and only after button is pressed and binary sem
 ├── README.md              			: Description of project
 ├── images              			: Folder contains images of project
       ├── LEDOn.jpg
-      ├── LEDOff.jpg
+      ├── LEDOff.png
 ├── FreeRTOS					: Folder contains FreeRTOS Library
       ├── License
       ├── Source
@@ -64,6 +66,8 @@ Both tasks fall into block state and only after button is pressed and binary sem
       ├── tm4c_nvic.c
       ├── tm4c_pll.h
       ├── tm4c_pll.c
+      ├── tm4c_uart.h
+      ├── tm4c_uart.c
 ├── FreeRTOSConfig.h				: Define macro variables for FreeRTOS configuration
 ├── main.c					: Main source code
 ├── startup_rvmdk.S				: File startup code for TM4C123G
@@ -79,7 +83,7 @@ In this project I'm not using the library from Texas Instrument, instead it's a 
 
 Author - [PHAM NGUYEN QUOC HUNG](https://hun9pham.github.io) - hungpham99er@gmail.com
 
-Project Link: [Souce code](https://github.com/hun9pham/freertos-roadmap/tree/main/Project/Binary%20semaphore%20synchronous)
+Project Link: [Souce code](https://github.com/hun9pham/freertos-roadmap/tree/main/Project/Event%20groups%20Synchronous%20tasks)
 
 
 
@@ -88,4 +92,4 @@ Project Link: [Souce code](https://github.com/hun9pham/freertos-roadmap/tree/mai
 * [TivaWare™ Peripheral Driver Library](www.ti.com/lit/ug/spmu298e/spmu298e.pdf)
 * [Task Creation](https://www.freertos.org/a00019.html)
 * [Task Control](https://www.freertos.org/a00112.html)
-* [Semaphore / Mutexs](https://www.freertos.org/a00113.html)
+* [Event Groups](https://www.freertos.org/FreeRTOS-Event-Groups.html)
