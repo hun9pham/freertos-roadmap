@@ -50,7 +50,7 @@ USB TTL CP2102 and Kit tiva C connection:
 |GND   | GND   | 
 <br>
 PuTTY's interface (Link references UART Communication TM4C123 Tiva C LaunchPad below).
-<p>
+<p align = "center">
 <img src="images/PuTTY.png" width="350" title="hover text">
 <p>
 
