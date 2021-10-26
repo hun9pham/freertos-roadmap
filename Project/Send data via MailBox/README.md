@@ -32,7 +32,7 @@ This project is built on the EK-TM4C123GXL development board.
 
 ### Overview
 
-This project creates two tasks for sending and reading data from the Mailbox object. MailBox is built from FreeRTOS Queue, the data will not be removed when reading data from Mailbox, instead they are just overwritten by the xQueueOverwrite().<br>
+This project creates two tasks for sending and reading data from the Mailbox object. MailBox is built from FreeRTOS Queue, the data will not be removed when reading data from Mailbox, instead they are only just overwritten by the xQueueOverwrite().<br>
 * Task 1 - vTask_UpdateMailBox<br>
 Update data by overwritten old message (increase data counter by one) by the xQueueOverwrite() function after each time delay 3.0 seconds. <br>
 * Task 2 - vTask_ReadMailBox<br>
