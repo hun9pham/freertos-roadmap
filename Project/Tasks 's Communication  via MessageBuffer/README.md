@@ -1,7 +1,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <h1 align="center">Binary Semaphore Interrupt Synchronization</h1>
+  <h1 align="center">Tasks 's Communication via StreamBuffer</h1>
   
   
 
@@ -32,16 +32,31 @@ This project is built on the EK-TM4C123GXL development board.
 
 ### Overview
 
-The project create two tasks and an external interrupt on switch 1 to synchronize these tasks using binary semaphore. These two tasks control an group LED (Red - Blue - Green LEDs). “LEDsOn” task turns on LEDs. Similarly, “LEDsOff” turns off LEDs.<br>
+This project performs message passing into the Message Buffer from an Interrupt Service Routine which happens when SW1 is pressed. Messages will be put into the Message Buffer after each time SW1 is pressed..<br>
+* Task - vTask_ReadMessageBuffer<br>
+This task will always wait for the Message Buffer to become available. After that it take the message received from Message Buffer and display on PuTTY screen via module UART5 communicate to computer. 
+<br>
+The project uses the UART5 module to communicate with the computer and uses the PuTTY software to display and receive data sent from the UART5 on the console.<br>
+<br>
+USB TTL CP2102 and Kit tiva C connection:
 
-Both these tasks have the same priority and use the same binary semaphore. After the scheduler starts, both tasks remain in a blocking state unless interrupt occurs and it gives binary semaphore by xSemaphoreGiveFromISR() function. Because equal priority tasks follow a time-sharing scheduling algorithm in FreeRTOS. In response, both tasks will acquire binary semaphore turn by turn.<br>
+
+| EK-TM4C123GXL  |USB TTL CP2102		|
+|----------------|-------------------------------|
+|PE4      | Tx|
+|PE5 	 | Rx| 
+|GND   | GND   | 
+<br>
+PuTTY's interface (Link references UART Communication TM4C123 Tiva C LaunchPad below).
+<p align = "center">
+<img src="images/PuTTY.png" width="350" title="hover text">
+<p>
 
 ### Expected Behavior
 <p>
-Both tasks fall into block state and only after button is pressed and binary semaphore will be given (initially when binary semaphore is generated it will be in indeterminate state). Tasks will take turns receiving the binary semaphore and executing
+Display message which is hold by Message Buffer object after each SW1 pressed.<br>
 <p align="center">
-  <img src="images/LEDOff.jpg" width="350" title="hover text">
-  <img src="images/LEDOn.jpg" width="350" title="hover text">
+  <img src="images/UART5.png" width="550" title="hover text">
 </p>
 
 
@@ -50,8 +65,9 @@ Both tasks fall into block state and only after button is pressed and binary sem
 ```
 ├── README.md              			: Description of project
 ├── images              			: Folder contains images of project
-      ├── LEDOn.jpg
-      ├── LEDOff.jpg
+      ├── GreenLED.jpg
+      ├── RedLED.jpg
+      ├── MonitorUAR.png
 ├── FreeRTOS					: Folder contains FreeRTOS Library
       ├── License
       ├── Source
@@ -64,6 +80,8 @@ Both tasks fall into block state and only after button is pressed and binary sem
       ├── tm4c_nvic.c
       ├── tm4c_pll.h
       ├── tm4c_pll.c
+      ├── tm4c_uart.h
+      ├── tm4c_uart.c
 ├── FreeRTOSConfig.h				: Define macro variables for FreeRTOS configuration
 ├── main.c					: Main source code
 ├── startup_rvmdk.S				: File startup code for TM4C123G
@@ -79,7 +97,7 @@ In this project I'm not using the library from Texas Instrument, instead it's a 
 
 Author - [PHAM NGUYEN QUOC HUNG](https://hun9pham.github.io) - hungpham99er@gmail.com
 
-Project Link: [Souce code](https://github.com/hun9pham/freertos-roadmap/tree/main/Project/Binary%20semaphore%20synchronous)
+Project Link: [Souce code](https://github.com/hun9pham/freertos-roadmap/tree/main/Project/Tasks%20's%20Communication%20%20via%20MessageBuffer)
 
 
 
@@ -88,4 +106,6 @@ Project Link: [Souce code](https://github.com/hun9pham/freertos-roadmap/tree/mai
 * [TivaWare™ Peripheral Driver Library](www.ti.com/lit/ug/spmu298e/spmu298e.pdf)
 * [Task Creation](https://www.freertos.org/a00019.html)
 * [Task Control](https://www.freertos.org/a00112.html)
-* [Semaphore / Mutexs](https://www.freertos.org/a00113.html)
+* [Message Buffer](https://www.freertos.org/RTOS-stream-message-buffers.html)
+* [PuTTY](https://www.putty.org)
+* [UART Communication TM4C123 Tiva C LaunchPad](https://microcontrollerslab.com/uart-communication-tm4c123-tiva-c-launchpad/)
