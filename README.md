@@ -38,9 +38,13 @@
 |[Task Notification](https://github.com/hun9pham/freertos-roadmap/tree/main/Project/Direct%20to%20task%20notifications)   |Direct to task notifications| 
 |[Queues Management](https://github.com/hun9pham/freertos-roadmap/tree/main/Project/InterTask%20comunication%20using%20Queues)   | InterTask comunication using Queues   | 
 |[Software Timer](https://github.com/hun9pham/freertos-roadmap/tree/main/Project/Software%20Timer%20type%20one%20-%20shot)   | Software Timer type one - shot  | 
-|[Mutex](https://github.com/hun9pham/freertos-roadmap/tree/main/Project/Access%20shared%20resource%20using%20Mutex)   | Access shared resource using Mutex | 
+|[Mutex](https://github.com/hun9pham/freertos-roadmap/tree/main/Project/Mutex%20accessing%20share%20resource)   | Mutex accessing shared resource | 
 |[Binary Semaphore](https://github.com/hun9pham/freertos-roadmap/tree/main/Project/Binary%20semaphore%20synchronous)   | Binary semaphore synchronous | 
-|[Counting Semaphore](https://github.com/hun9pham/freertos-roadmap/tree/main/Project/Couting%20event%20using%20counting%20semaphore)   | Couting event using counting semaphore | 
+|[Counting Semaphore](https://github.com/hun9pham/freertos-roadmap/tree/main/Project/Couting%20event%20using%20counting%20semaphore)   | Couting event using counting semaphore |
+|[Stream Buffer](https://github.com/hun9pham/freertos-roadmap/tree/main/Project/Tasks%20's%20Communication%20%20via%20StreamBuffer)  | Tasks 's Communication via Stream Buffer |
+|[Message Buffer](https://github.com/hun9pham/freertos-roadmap/tree/main/Project/Tasks%20's%20Communication%20%20via%20MessageBuffer) |Tasks 's Communication via Message Buffer|
+|[MailBox](https://github.com/hun9pham/freertos-roadmap/tree/main/Project/Send%20data%20via%20MailBox)   | Send data via MailBox |
+|[Event-Groups](https://github.com/hun9pham/freertos-roadmap/tree/main/Project/Event%20groups%20Synchronous%20tasks)   | Event groups Synchronous tasks|
 
 
 <!-- CONTACT -->
