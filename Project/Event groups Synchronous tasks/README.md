@@ -34,7 +34,7 @@ This project is built on the EK-TM4C123GXL development board.
 
 The program will create 4 tasks, in which 3 tasks named "Red", "Blue", "Green" will control 3 LEDs respectively, task "Rendezvous" will check the event bits in the event group To perform synchronously turn on all 3 LEDs.<br>
 * vTask_RedLED - vTask_RedLED - vTask_RedLED <br>
-Set the corresponding event bis of the task itself.<br>
+Set the corresponding event bits of the task itself when it hijacks execution.<br>
 * vTask_PointMeeting <br>
 Wait for the event bits in the event group to be considered to do their job.<br>
 
