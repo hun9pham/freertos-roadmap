@@ -101,7 +101,7 @@ In this project I'm not using the library from Texas Instrument, instead it's a 
 
 Author - [PHAM NGUYEN QUOC HUNG](https://hun9pham.github.io) - hungpham99er@gmail.com
 
-Project Link: [Souce code](https://github.com/hun9pham/freertos-roadmap/tree/main/Project/StreamBuffer%20communication)
+Project Link: [Souce code](https://github.com/hun9pham/freertos-roadmap/tree/main/Project/Tasks%20's%20Communication%20%20via%20StreamBuffer)
 
 
 
