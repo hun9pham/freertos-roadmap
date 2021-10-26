@@ -44,7 +44,7 @@ USB TTL CP2102 and Kit tiva C connection:
 |PE5 	 | Rx| 
 |GND   | GND   | 
 <br>
-PuTTY's interface. (References [UART Communication TM4C123 Tiva C LaunchPad](https://microcontrollerslab.com/uart-communication-tm4c123-tiva-c-launchpad/))
+PuTTY's interface (Link references UART Communication TM4C123 Tiva C LaunchPad below).
 <p>
 <img src="images/PuTTY.png" width="350" title="hover text">
 <p>
