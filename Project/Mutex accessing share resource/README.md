@@ -32,7 +32,7 @@ This project is built on the EK-TM4C123GXL development board.
 
 ### Overview
 
-This project describes accessing the shared resource between "MsgOne" task and "MsgTwo" task by using Mutex to avoid race condition. Shared Resource here is an array of characters. Depending on the task, it will have its own Message and be passed to the shared resource.<br>
+This project describes accessing the shared resource between "MsgOne" task and "MsgTwo" task by using Mutex to avoid race condition. Shared Resource here is an array of characters. Depending on the task, it will have its own Message and be passed to the shared resource.<br><br>
 The project uses the UART5 module to communicate with the computer and uses the PuTTY software to display and receive data sent from the UART5 on the console.<br>
 <br>
 USB TTL CP2102 and Kit tiva C connection:
@@ -44,7 +44,7 @@ USB TTL CP2102 and Kit tiva C connection:
 |PE5 	 | Rx| 
 |GND   | GND   | 
 <br>
-PuTTY's interface.
+PuTTY's interface. (References [UART Communication TM4C123 Tiva C LaunchPad](https://microcontrollerslab.com/uart-communication-tm4c123-tiva-c-launchpad/))
 <p>
 <img src="images/PuTTY.png" width="350" title="hover text">
 <p>
