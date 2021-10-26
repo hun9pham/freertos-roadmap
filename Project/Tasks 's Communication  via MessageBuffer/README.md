@@ -1,7 +1,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <h1 align="center">Tasks 's Communication via StreamBuffer</h1>
+  <h1 align="center">Tasks 's Communication via MessageBuffer</h1>
   
   
 
