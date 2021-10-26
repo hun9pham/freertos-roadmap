@@ -38,12 +38,14 @@ The project uses the UART5 module to communicate with the computer and uses the 
 | EK-TM4C123GXL  |USB TTL CP2102		|
 |----------------|-------------------------------|
 |PE4      | Tx|
-|PE5  | Rx| 
+|PE5 	 | Rx| 
 |GND   | GND   | 
 <br>
 PuTTY's interface.
-<br>
+<p>
 <img src="images/PuTTY.png" width="350" title="hover text">
+<p>
+
 ### Expected Behavior
 <p>
 message from task "MsgOne" and "MsgTwo" sent respectively without race condition problem when accessing to shared resource.<br>
