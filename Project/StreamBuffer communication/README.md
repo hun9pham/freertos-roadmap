@@ -1,7 +1,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <h1 align="center">Accessing to share resource using Mutex</h1>
+  <h1 align="center">StreamBuffer communication</h1>
   
   
 
